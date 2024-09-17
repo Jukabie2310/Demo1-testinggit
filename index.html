@@ -2,70 +2,180 @@
 <html lang="th">
 <head>
     <meta charset="UTF-8">
-    <title>เว็บไซต์ยืมหนังสือ</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blockchain KU</title>
     <style>
         body {
-            background-color: #ff4d4d;
-            font-family: Arial, sans-serif;
+            background-color: #0D0D2B; /* พื้นหลังสีดำ-น้ำเงิน */
+            color: #E0E0E0; /* ข้อความสีเทาอ่อน */
+            font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 0;
-            color: white;
-        }
-        header {
-            background-image: url('mountain.jpg');
+            background-image: url('https://www.solarsystemscope.com/textures/download/2k_stars_milky_way.jpg');
             background-size: cover;
+            background-attachment: fixed;
             background-position: center;
-            height: 250px;
-            text-align: center;
-            padding-top: 50px;
         }
-        header h1 {
-            font-size: 3em;
-            text-shadow: 2px 2px #000;
-        }
-        .content {
-            padding: 20px;
-        }
-        .book-list {
-            list-style-type: none;
-            padding: 0;
-        }
-        .book-list li {
-            background-color: rgba(255, 255, 255, 0.2);
-            margin: 10px 0;
-            padding: 15px;
-            border-radius: 5px;
-        }
-        .book-list li:hover {
-            background-color: rgba(255, 255, 255, 0.3);
-        }
-        footer {
-            text-align: center;
-            padding: 10px;
-            background-color: #b30000;
+
+        nav {
+            background-color: rgba(13, 13, 43, 0.9);
+            display: flex;
+            justify-content: space-between;
+            padding: 15px 50px;
             position: fixed;
             width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav a {
+            color: #E0E0E0;
+            text-decoration: none;
+            font-size: 1.1rem;
+            padding: 10px 20px;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #BB86FC;
+        }
+
+        /* เพิ่มการเคลื่อนไหวให้กับพื้นหลังของส่วนหัว */
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+            100% {
+                background-position: 100% 50%;
+            }
+        }
+
+        header {
+            background: linear-gradient(135deg, #0A1F44, #000000); /* สีน้ำเงินเข้มออกดำ */
+            background-size: 200% 200%;
+            animation: gradient 5s ease infinite;
+            padding: 100px 20px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* เงาเบาๆ */
+        }
+
+        h1 {
+            color: #00FFFF; /* สีฟ้านีออน */
+            font-size: 3rem;
+            margin: 0;
+            text-shadow: 0 0 10px #00FFFF;
+        }
+
+        p {
+            color: #B0B0B0; /* ข้อความรองสีเทา */
+            font-size: 1.2rem;
+            margin: 20px 0;
+        }
+
+        /* ปรับปุ่มให้ดูสว่างและมีการเคลื่อนไหว */
+        .button {
+            background-color: #03DAC6; /* ปุ่มสีฟ้า-เขียว */
+            color: #121212;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s, box-shadow 0.3s;
+            box-shadow: 0 0 15px #03DAC6;
+        }
+
+        .button:hover {
+            background-color: #018786;
+            box-shadow: 0 0 25px #03DAC6, 0 0 50px #03DAC6;
+            transform: scale(1.05); /* ขยายขนาดเล็กน้อยเมื่อ hover */
+        }
+
+        /* เน้นข้อความสำคัญในเนื้อหาด้วยสี */
+        .highlight {
+            color: #00FFFF;
+            font-weight: bold;
+        }
+
+        .content {
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .card {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            margin: 20px;
+            display: inline-block;
+            width: 30%;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.7);
+        }
+
+        footer {
+            background-color: rgba(13, 13, 43, 0.9);
+            color: #A0A0A0;
+            text-align: center;
+            padding: 20px;
+            position: fixed;
             bottom: 0;
+            width: 100%;
+        }
+
+        footer a {
+            color: #03DAC6;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>ยืมหนังสือออนไลน์</h1>
-    </header>
-    <div class="content">
-        <h2>รายการหนังสือ</h2>
-        <ul class="book-list">
-            <li>หนังสือเรื่องที่ 1</li>
-            <li>หนังสือเรื่องที่ 2</li>
-            <li>หนังสือเรื่องที่ 3</li>
-            <!-- เพิ่มหนังสือเพิ่มเติมที่นี่ -->
-        </ul>
+
+<nav>
+    <div>
+        <a href="#">หน้าแรก</a>
+        <a href="#">เกี่ยวกับเรา</a>
+        <a href="#">บริการ</a>
+        <a href="#">ติดต่อเรา</a>
     </div>
-    <footer>
-        &copy; 2023 เว็บไซต์ยืมหนังสือ
-    </footer>
-    </h1>Git first time</h>
+</nav>
+
+<header>
+    <h1>Blockchain KU</h1>
+    <p>ค้นพบโลกของ <span class="highlight">Blockchain</span> และ <span class="highlight">Web3</span> ที่จะเปลี่ยนแปลงอนาคต</p>
+    <button class="button">เรียนรู้เพิ่มเติม</button>
+</header>
+
+<div class="content">
+    <h2>Blockchain และ Web3 คืออะไร?</h2>
+    <div class="card">
+        <h3><span class="highlight">Blockchain</span></h3>
+        <p><span class="highlight">Blockchain</span> คือเทคโนโลยีการจัดเก็บข้อมูลแบบกระจายศูนย์ที่มีความปลอดภัยและโปร่งใส ข้อมูลจะถูกบันทึกในบล็อกและเชื่อมต่อกันในรูปแบบโซ่ ซึ่งจะเปลี่ยนแปลงได้ยากและต้องได้รับการยืนยันจากเครือข่าย</p>
+    </div>
+    <div class="card">
+        <h3><span class="highlight">Web3</span></h3>
+        <p><span class="highlight">Web3</span> คือแนวคิดของการพัฒนาอินเทอร์เน็ตใหม่ โดยมุ่งเน้นให้ผู้ใช้ควบคุมข้อมูลและทรัพยากรได้มากขึ้นผ่านเทคโนโลยี Blockchain และการกระจายอำนาจ (Decentralization)</p>
+    </div>
+    <div class="card">
+        <h3>อนาคตของ <span class="highlight">Web3</span></h3>
+        <p><span class="highlight">Web3</span> จะเปลี่ยนโฉมการใช้งานแอปพลิเคชันและบริการออนไลน์ ให้ผู้ใช้เป็นเจ้าของข้อมูลตัวเอง พร้อมกับความโปร่งใสและความปลอดภัยที่สูงขึ้น</p>
+    </div>
+    <!-- เพิ่มข้อมูลการ์ดเพิ่มเติมตามเนื้อหา -->
+</div>
+
+<footer>
+    &copy; 2024 Blockchain KU | <a href="#">นโยบายความเป็นส่วนตัว</a>
+</footer>
+
 </body>
 </html>
 
